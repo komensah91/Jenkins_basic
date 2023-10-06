@@ -1,0 +1,10 @@
+pipeline{
+    agent any
+    stages{
+        stage('checkout'){
+            steps {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'AWS_ACCESS_KEY', url: 'https://github.com/komensah91/Jenkins_basic.git']])
+            }
+        }
+    }
+}
