@@ -6,5 +6,16 @@ pipeline{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'AWS_ACCESS_KEY', url: 'https://github.com/komensah91/Jenkins_basic.git']])
             }
         }
+        stage("terraform init") {
+            steps{
+                sh('terraform init')
+            }
+        }
+        stage("terraform Action"){
+            steps{
+                echo "Terraform action is --> &{action}"
+                sh('terraform &{action} --auto-approve')
+            }
+        }
     }
 }
